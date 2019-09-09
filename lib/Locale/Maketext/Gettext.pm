@@ -21,7 +21,8 @@ use Encode qw(encode decode FB_DEFAULT);
 use File::Spec::Functions qw(catfile);
 no strict qw(refs);
 
-use vars qw(%Lexicons %ENCODINGS $REREAD_MO $MO_FILE);
+use vars qw(%CACHE $REREAD_MO $MO_FILE);
+%CACHE = qw();
 $REREAD_MO = 0;
 $MO_FILE = "";
 use vars qw(@SYSTEM_LOCALEDIRS);
@@ -191,7 +192,7 @@ sub textdomain : method {
     
     # Read the MO file
     # Cached
-    if (!exists $ENCODINGS{$mo_file} || !exists $Lexicons{$mo_file}) {
+    if (!exists $CACHE{$mo_file}) {
         my $enc;
         # Read it
         %_ = read_mo($mo_file);
@@ -211,13 +212,15 @@ sub textdomain : method {
         }
         
         # Cache them
-        $Lexicons{$mo_file} = \%_;
-        $ENCODINGS{$mo_file} = $enc;
+        $CACHE{$mo_file} = {
+                "Lexicon"   => {%_},
+                "encoding"  => $enc,
+            };
     }
     
     # Respect the existing output encoding
-    if (defined $ENCODINGS{$mo_file}) {
-        $self->{"MO_ENCODING"} = $ENCODINGS{$mo_file};
+    if (defined $CACHE{$mo_file}->{"encoding"}) {
+        $self->{"MO_ENCODING"} = $CACHE{$mo_file}->{"encoding"};
     } else {
         delete $self->{"MO_ENCODING"};
     }
@@ -229,8 +232,8 @@ sub textdomain : method {
             delete $self->{"ENCODING"};
         }
     }
-    $self->{"Lexicon"} = $Lexicons{$mo_file};
-    %{"$class\::Lexicon"} = %{$Lexicons{$mo_file}};
+    $self->{"Lexicon"} = $CACHE{$mo_file}->{"Lexicon"};
+    %{"$class\::Lexicon"} = %{$CACHE{$mo_file}->{"Lexicon"}};
     $self->clear_isa_scan;
     
     return $DOMAIN;
@@ -366,8 +369,7 @@ sub reload_text : method {
     local ($_, %_);
     
     # Purge the text cache
-    %Lexicons = qw();
-    %ENCODINGS = qw();
+    %CACHE = qw();
     $REREAD_MO = time;
     
     return;
