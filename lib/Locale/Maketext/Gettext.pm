@@ -1,6 +1,6 @@
 # Locale::Maketext::Gettext - Joins the gettext and Maketext frameworks
 
-# Copyright (c) 2003-2009 imacat. All rights reserved. This program is free
+# Copyright (c) 2003-2019 imacat. All rights reserved. This program is free
 # software; you can redistribute it and/or modify it under the same terms
 # as Perl itself.
 # First written: 2003-04-23
@@ -11,7 +11,7 @@ use strict;
 use warnings;
 use base qw(Locale::Maketext Exporter);
 use vars qw($VERSION @ISA %Lexicon @EXPORT @EXPORT_OK);
-$VERSION = 1.28;
+$VERSION = 1.29;
 @EXPORT = qw(read_mo);
 @EXPORT_OK = @EXPORT;
 # Prototype declaration
@@ -192,8 +192,8 @@ sub textdomain : method {
     
     # Read the MO file
     # Cached
-    if (!exists $CACHE{$mo_file}) {
-        my $enc;
+    if (!$self->_is_using_cache($mo_file)) {
+        my ($enc, @stats, $mtime, $size);
         # Read it
         %_ = read_mo($mo_file);
         
@@ -212,9 +212,17 @@ sub textdomain : method {
         }
         
         # Cache them
+        @stats = stat $mo_file;
+        if (@stats > 0) {
+            ($mtime, $size) = @stats[9,7];
+        } else {
+            ($mtime, $size) = (undef, undef);
+        }
         $CACHE{$mo_file} = {
                 "Lexicon"   => {%_},
                 "encoding"  => $enc,
+                "mtime"     => $mtime,
+                "size"      => $size,
             };
     }
     
@@ -237,6 +245,31 @@ sub textdomain : method {
     $self->clear_isa_scan;
     
     return $DOMAIN;
+}
+
+# _is_using_cache: Return whether we are using our cache.
+sub _is_using_cache : method {
+    local ($_, %_);
+    my ($self, $mo_file, @stats, $mtime, $size);
+    ($self, $mo_file) = @_;
+    
+    # NO if we do not have such a cache.
+    return undef unless exists $CACHE{$mo_file};
+    
+    @stats = stat $mo_file;
+    # The MO file does not exist previously.
+    if (!defined $CACHE{$mo_file}->{"mtime"}
+        || !defined $CACHE{$mo_file}->{"size"}) {
+        # Use the cache if the MO file still does not exist.
+        return (@stats == 0);
+    
+    # The MO file exists previously.
+    } else {
+        # Use the cache if the MO file did not change.
+        ($mtime, $size) = @stats[9,7];
+        return $mtime == $CACHE{$mo_file}->{"mtime"}
+                && $size == $CACHE{$mo_file}->{"size"};
+    }
 }
 
 # maketext: Encode after maketext
@@ -809,7 +842,7 @@ imacat <imacat@mail.imacat.idv.tw>
 
 =head1 COPYRIGHT
 
-Copyright (c) 2003-2008 imacat. All rights reserved. This program is free
+Copyright (c) 2003-2019 imacat. All rights reserved. This program is free
 software; you can redistribute it and/or modify it under the same terms
 as Perl itself.
 

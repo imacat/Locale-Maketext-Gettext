@@ -1,0 +1,46 @@
+{
+   "abstract" : "Joins gettext and Maketext frameworks",
+   "author" : [
+      "imacat <imacat@mail.imacat.idv.tw>"
+   ],
+   "dynamic_config" : 1,
+   "generated_by" : "Module::Build version 0.422",
+   "license" : [
+      "perl_5"
+   ],
+   "meta-spec" : {
+      "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
+      "version" : "2"
+   },
+   "name" : "Locale-Maketext-Gettext",
+   "prereqs" : {
+      "configure" : {
+         "requires" : {
+            "Module::Build" : "0.42"
+         }
+      },
+      "runtime" : {
+         "requires" : {
+            "perl" : "v5.8.0"
+         }
+      }
+   },
+   "provides" : {
+      "Locale::Maketext::Gettext" : {
+         "file" : "lib/Locale/Maketext/Gettext.pm",
+         "version" : "1.29"
+      },
+      "Locale::Maketext::Gettext::Functions" : {
+         "file" : "lib/Locale/Maketext/Gettext/Functions.pm",
+         "version" : "0.13"
+      }
+   },
+   "release_status" : "stable",
+   "resources" : {
+      "license" : [
+         "http://dev.perl.org/licenses/"
+      ]
+   },
+   "version" : "1.29",
+   "x_serialization_backend" : "JSON::PP version 2.27300_01"
+}
