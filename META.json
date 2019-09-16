@@ -4,7 +4,7 @@
       "imacat <imacat@mail.imacat.idv.tw>"
    ],
    "dynamic_config" : 1,
-   "generated_by" : "Module::Build version 0.422",
+   "generated_by" : "ExtUtils::MakeMaker version 7.1002, CPAN::Meta::Converter version 2.150005",
    "license" : [
       "perl_5"
    ],
@@ -13,34 +13,28 @@
       "version" : "2"
    },
    "name" : "Locale-Maketext-Gettext",
+   "no_index" : {
+      "directory" : [
+         "t",
+         "inc"
+      ]
+   },
    "prereqs" : {
+      "build" : {
+         "requires" : {
+            "ExtUtils::MakeMaker" : "0"
+         }
+      },
       "configure" : {
          "requires" : {
-            "Module::Build" : "0.42"
+            "ExtUtils::MakeMaker" : "0"
          }
       },
       "runtime" : {
-         "requires" : {
-            "perl" : "v5.8.0"
-         }
-      }
-   },
-   "provides" : {
-      "Locale::Maketext::Gettext" : {
-         "file" : "lib/Locale/Maketext/Gettext.pm",
-         "version" : "1.29"
-      },
-      "Locale::Maketext::Gettext::Functions" : {
-         "file" : "lib/Locale/Maketext/Gettext/Functions.pm",
-         "version" : "0.13"
+         "requires" : {}
       }
    },
    "release_status" : "stable",
-   "resources" : {
-      "license" : [
-         "http://dev.perl.org/licenses/"
-      ]
-   },
-   "version" : "1.29",
+   "version" : "1.30",
    "x_serialization_backend" : "JSON::PP version 2.27300_01"
 }
