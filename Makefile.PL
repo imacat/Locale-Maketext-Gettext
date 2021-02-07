@@ -12,7 +12,7 @@ $eummver =~ s/_//;
 
 WriteMakefile(
     NAME        => "Locale-Maketext-Gettext",
-    VERSION     => "1.30",
+    VERSION     => "1.31",
     ABSTRACT    => "Joins gettext and Maketext frameworks",
     AUTHOR      => "imacat <imacat\@mail.imacat.idv.tw>",
     %license,

@@ -11,7 +11,7 @@ use strict;
 use warnings;
 use base qw(Exporter);
 our ($VERSION, @EXPORT, @EXPORT_OK);
-$VERSION = 0.13;
+$VERSION = 0.14;
 @EXPORT = qw(
 bindtextdomain textdomain get_handle maketext __ N_
 dmaketext pmaketext dpmaketext

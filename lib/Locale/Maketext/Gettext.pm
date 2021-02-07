@@ -11,7 +11,7 @@ use strict;
 use warnings;
 use base qw(Locale::Maketext Exporter);
 our ($VERSION, @EXPORT, @EXPORT_OK);
-$VERSION = 1.30;
+$VERSION = 1.31;
 @EXPORT = qw(read_mo);
 @EXPORT_OK = @EXPORT;
 # Prototype declaration

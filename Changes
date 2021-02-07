@@ -1,6 +1,6 @@
 Locale-Maketext-Gettext change log
 
-2021-02-07
+2021-02-07	version 1.31
 	 1. Updated .gitignore.
 	 2. Added MANIFEST.SKIP.
 	 3. MANIFEST, META.json, META.yml, SIGNATURE: Generated files
