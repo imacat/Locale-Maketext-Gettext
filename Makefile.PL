@@ -11,7 +11,7 @@ $eummver =~ s/_//;
 %license = (LICENSE => "perl") if $eummver > 6.30;
 
 WriteMakefile(
-    NAME        => "Locale-Maketext-Gettext",
+    NAME        => "Locale::Maketext::Gettext",
     VERSION     => "1.31",
     ABSTRACT    => "Joins gettext and Maketext frameworks",
     AUTHOR      => "imacat <imacat\@mail.imacat.idv.tw>",
