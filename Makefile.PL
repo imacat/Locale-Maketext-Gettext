@@ -6,7 +6,7 @@ use ExtUtils::MakeMaker;
 
 WriteMakefile(
     NAME        => "Locale::Maketext::Gettext",
-    VERSION     => "1.31",
+    VERSION     => "1.32",
     ABSTRACT    => "Joins gettext and Maketext frameworks",
     AUTHOR      => "imacat <imacat\@mail.imacat.idv.tw>",
     PREREQ_PM   => { },

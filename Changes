@@ -1,5 +1,11 @@
 Locale-Maketext-Gettext change log
 
+2021-02-08	version 1.32
+	 1. Makefile.PL, Build.PL: Added the CPAN distribution metadata.
+
+2021-02-07
+	 1. maketext: Fixed the version number.
+
 2021-02-07	version 1.31
 	 1. Updated .gitignore.
 	 2. Added MANIFEST.SKIP.
