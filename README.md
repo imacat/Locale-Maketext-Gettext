@@ -100,7 +100,7 @@ If you want to install into another location, you can set the
     % perl Makefile.PL PREFIX=/home/jessica
 
 Refer to the documentation of ExtUtils::MakeMaker for more
-installation options (by running perldoc ExtUtils::MakeMaker).
+installation options (by running `perldoc ExtUtils::MakeMaker`).
 
 
 ### Install with [Module::Build]
@@ -124,7 +124,7 @@ If you want to install into another location, you can set the
     % perl Build.PL --prefix=/home/jessica
 
 Refer to the documentation of Module::Build for more
-installation options (by running perldoc Module::Build).
+installation options (by running `perldoc Module::Build`).
 
 
 ### Install with the CPAN Shell
@@ -155,7 +155,7 @@ into your home when you are not `root`:
     cpan> install Locale::Maketext::Gettext
 
 Refer to the documentation of cpan for more CPAN shell commands
-(by running perldoc cpan).
+(by running `perldoc cpan`).
 
 
 ### Install with the CPANPLUS Shell
