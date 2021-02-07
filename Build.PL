@@ -1,5 +1,7 @@
 #! /usr/bin/perl -w
+require 5.008;
 use strict;
+use warnings FATAL => 'all';
 use Module::Build;
 
 my $build = Module::Build->new(
