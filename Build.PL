@@ -17,6 +17,21 @@ my $build = Module::Build->new(
         "perl"          => "5.8.0",
     },
     add_to_cleanup	=> [ "t/test_native.po", "t/locale/en/LC_MESSAGES/test_native.mo" ],
+
+    meta_merge  => {
+        "meta-spec" => { version => 2 },
+        resources   => {
+            homepage    => "https://metacpan.org/release/Locale-Maketext-Gettext",
+            repository  => {
+                type    => "git",
+                url     => "git://github.com/imacat/Locale-Maketext-Gettext.git",
+                web     => "https://github.com/imacat/Locale-Maketext-Gettext",
+            },
+            bugtracker  => {
+                "web"   => "https://github.com/imacat/Locale-Maketext-Gettext/issues"
+            }
+        },
+    },
 );
 
 $build->create_build_script;

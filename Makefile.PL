@@ -21,6 +21,21 @@ WriteMakefile(
     clean		=> {
         FILES		=> "t/test_native.po t/locale/en/LC_MESSAGES/test_native.mo",
     },
+
+    META_MERGE  => {
+        "meta-spec" => { version => 2 },
+        resources   => {
+            homepage    => "https://metacpan.org/release/Locale-Maketext-Gettext",
+            repository  => {
+                type    => "git",
+                url     => "git://github.com/imacat/Locale-Maketext-Gettext.git",
+                web     => "https://github.com/imacat/Locale-Maketext-Gettext",
+            },
+            bugtracker  => {
+                "web"   => "https://github.com/imacat/Locale-Maketext-Gettext/issues"
+            }
+        },
+    },
 );
 
 __END__
