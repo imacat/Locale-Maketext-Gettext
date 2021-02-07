@@ -11,7 +11,7 @@ use strict;
 use warnings;
 use Getopt::Long qw(GetOptions);
 use Locale::Maketext::Gettext::Functions;
-our $VERSION = 0.05;
+our $VERSION = 0.06;
 # Prototype declaration
 sub main();
 sub parse_args();
