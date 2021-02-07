@@ -1,7 +1,19 @@
 Locale-Maketext-Gettext change log
 
+2021-02-07
+	 1. Updated .gitignore.
+	 2. Added MANIFEST.SKIP.
+	 3. MANIFEST, META.json, META.yml, SIGNATURE: Generated files
+	    removed from the Git repository.
+	 4. COPYING: Removed the redundant and irrelevant GPL license.
+	 5. BUGS, INSTALL, README, THANKS, TODO, README.md: Replaced the
+	    messy GNU-styled documents with a single Markdown README.md,
+	    and updated the URLs.
+	 6. Gettext.pm, Functions.pm, maketext, 11-command-line.t,
+	    12-cache.t, Changes: Various fixes to avoid JetBrains IDE
+	    problem detection.
+
 2019-09-17	version 1.30
-	 Fix after 10 years.
 	 1. 12-cache.t: Fixed so that it works on MS-Win32.  I forgot to
 	    issue binmode when copying the MO files.
 	 2. 00-signature.t: Removed TEST_SIGNATURE, as this does not work
